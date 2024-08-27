@@ -167,13 +167,30 @@ job = [];
 file_path_design = spm_select('FPList', folder_path_glm, '^SPM.mat$');
 job{1}.spm.stats.con.spmmat = {file_path_design};
 
-job{1}.spm.stats.con.consess{1}.tcon.name = '<UNDEFINED>';
-job{1}.spm.stats.con.consess{1}.tcon.weights = '<UNDEFINED>';
+job{1}.spm.stats.con.consess{1}.tcon.name = 'sub001 ALT';
+job{1}.spm.stats.con.consess{1}.tcon.weights = repmat([1 0 0 0 0 0 0 0 0 0],1, 6);
 job{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
 
-job{1}.spm.stats.con.consess{1}.tcon.name = '<UNDEFINED>';
-job{1}.spm.stats.con.consess{1}.tcon.weights = '<UNDEFINED>';
-job{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
+job{1}.spm.stats.con.consess{2}.tcon.name = 'sub001 SIM';
+job{1}.spm.stats.con.consess{2}.tcon.weights = repmat([0 1 0 0 0 0 0 0 0 0],1, 6);
+job{1}.spm.stats.con.consess{2}.tcon.sessrep = 'none';
+
+job{1}.spm.stats.con.consess{3}.tcon.name = 'sub002 ALT';
+job{1}.spm.stats.con.consess{3}.tcon.weights = [repmat(repelem(0,10),1,6) repelem(0,8) repmat([1 0 0 0 0 0 0 0 0 0],1, 6)];
+job{1}.spm.stats.con.consess{3}.tcon.sessrep = 'none';
+
+job{1}.spm.stats.con.consess{4}.tcon.name = 'sub002 SIM';
+job{1}.spm.stats.con.consess{4}.tcon.weights = [repmat(repelem(0,10),1,6) repelem(0,8) repmat([0 1 0 0 0 0 0 0 0 0],1, 6)];
+job{1}.spm.stats.con.consess{4}.tcon.sessrep = 'none';
+
+job{1}.spm.stats.con.consess{5}.tcon.name = 'sub001 Localizer LEFT AND RIGHT';
+job{1}.spm.stats.con.consess{5}.tcon.weights = [repmat(repelem(0,10),1,6) [1 1 0 0 0 0 0 0]];
+job{1}.spm.stats.con.consess{5}.tcon.sessrep = 'none';
+
+job{1}.spm.stats.con.consess{6}.tcon.name = 'sub002 Localizer LEFT AND RIGHT';
+job{1}.spm.stats.con.consess{6}.tcon.weights = [repmat(repelem(0,10),1,6) repelem(0,8) repmat(repelem(0,10),1,6) [1 1 0 0 0 0 0 0]];
+job{1}.spm.stats.con.consess{6}.tcon.sessrep = 'none';
+
 
 job{1}.spm.stats.con.consess{2}.fcon.name = '<UNDEFINED>';
 job{1}.spm.stats.con.consess{2}.fcon.weights = '<UNDEFINED>';
