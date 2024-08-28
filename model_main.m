@@ -268,6 +268,18 @@ job{1}.spm.stats.con.consess{16}.fcon.weights = [zeros(68) sub_all_runs_eye];
 job{1}.spm.stats.con.consess{16}.fcon.sessrep = 'none';
 
 
+sub_all_runs_eye = eye(68);
+sub_all_runs_eye(:,1:60)=0;
+sub_all_runs_eye(:,63:end)=0;
+job{1}.spm.stats.con.consess{17}.fcon.name = 'sub001 LOCALIZER F';
+job{1}.spm.stats.con.consess{17}.fcon.weights = [sub_all_runs_eye zeros(68)];
+job{1}.spm.stats.con.consess{17}.fcon.sessrep = 'none';
+
+job{1}.spm.stats.con.consess{18}.fcon.name = 'sub002 LOCALIZER F';
+job{1}.spm.stats.con.consess{18}.fcon.weights = [zeros(68) sub_all_runs_eye];
+job{1}.spm.stats.con.consess{18}.fcon.sessrep = 'none';
+
+
 job{1}.spm.stats.con.delete = 1;
 
 spm_jobman('run', job);
