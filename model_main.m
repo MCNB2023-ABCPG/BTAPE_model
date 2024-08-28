@@ -130,9 +130,9 @@ for j=[1,2]
 
     [onset, offset] = get_onset_ext(file_path_log, file_path_info, j, sub_int, 0);
 
-    job{1}.spm.stats.fmri_spec.sess(i).cond(j).name = bistable_struct{j}.name;
+    job{1}.spm.stats.fmri_spec.sess(i).cond(j).name = localizer_struct{j}.name;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).onset = onset;
-    job{1}.spm.stats.fmri_spec.sess(i).cond(j).duration = bistable_struct{j}.duration;
+    job{1}.spm.stats.fmri_spec.sess(i).cond(j).duration = localizer_struct{j}.duration;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).tmod = 0;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).pmod = struct('name', {}, 'param', {}, 'poly', {});
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).orth = 1;
