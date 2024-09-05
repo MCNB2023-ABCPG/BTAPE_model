@@ -152,6 +152,43 @@ job{1}.spm.stats.con.consess{22}.fcon.weights = [zeros(68) sub_all_runs_eye];
 job{1}.spm.stats.con.consess{22}.fcon.sessrep = 'none';
 
 
+sub_all_runs_eye = eye(68*2);
+for i=1:6
+    sub_all_runs_eye(:,(i*10-8):(i*10)) = 0;
+end
+sub_all_runs_eye(:,60:68)=0;
+for i=1:6
+    sub_all_runs_eye(:,(i*10-8+68):(i*10+68)) = 0;
+end
+sub_all_runs_eye(:,end-8:end)=0;
+
+job{1}.spm.stats.con.consess{23}.fcon.name = 'sub001 & sub002 F over all runs separately';
+job{1}.spm.stats.con.consess{23}.fcon.weights = sub_all_runs_eye;
+job{1}.spm.stats.con.consess{23}.fcon.sessrep = 'none';
+
+
+sub_all_runs_eye = eye(68);
+for i=1:6
+    sub_all_runs_eye(:,(i*10-8):(i*10)) = 0;
+end
+sub_all_runs_eye(:,60:68)=0;
+
+sub_all_runs_eye = [repelem(0,68,1) sub_all_runs_eye(:,1:end-1)] + sub_all_runs_eye;
+
+job{1}.spm.stats.con.consess{24}.fcon.name = 'sub001 F over both conditions';
+job{1}.spm.stats.con.consess{24}.fcon.weights = sub_all_runs_eye;
+job{1}.spm.stats.con.consess{24}.fcon.sessrep = 'none';
+
+job{1}.spm.stats.con.consess{25}.fcon.name = 'sub002 F over both conditions';
+job{1}.spm.stats.con.consess{25}.fcon.weights = [zeros(68) sub_all_runs_eye];
+job{1}.spm.stats.con.consess{25}.fcon.sessrep = 'none';
+
+
+
+
+
+
+
 job{1}.spm.stats.con.delete = 1;
 
 spm_jobman('run', job);
