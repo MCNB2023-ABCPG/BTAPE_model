@@ -1,5 +1,5 @@
 %% path specification
-folder_path_root = '/Users/pschm/BTAPE_local';
+folder_path_root = '/Users/pschm/BTAPE_local_new';
 spm_path = '/Users/pschm/spm12_dev_main';
 folder_path_code = '/Users/pschm/icloud_link/University/mcnb/2_semester/NMP/BTAPE_model';
 
@@ -21,7 +21,7 @@ if ~exist(folder_path_glm, 'dir')
 end
 
 %% Switch
-switch_prep = [3];
+switch_prep = [1 2 3];
 
 
 %% GLM specification
@@ -43,5 +43,5 @@ end
 
 
 %% clean up
-rmpath(spm_path)
-rmpath(genpath(folder_path_code))
+%rmpath(spm_path)
+%rmpath(genpath(folder_path_code))
