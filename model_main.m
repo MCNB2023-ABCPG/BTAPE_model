@@ -21,7 +21,7 @@ if ~exist(folder_path_glm, 'dir')
 end
 
 %% Switch
-switch_prep = [1 2 3];
+switch_prep = [3];
 
 
 %% GLM specification

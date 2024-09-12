@@ -39,7 +39,7 @@ job{1}.spm.stats.fmri_spec.fact = struct('name', {}, 'levels', {});
 job{1}.spm.stats.fmri_spec.bases.hrf.derivs = [0 0];
 job{1}.spm.stats.fmri_spec.volt = 1;
 job{1}.spm.stats.fmri_spec.global = 'None';
-job{1}.spm.stats.fmri_spec.mthresh = 0.8;
+job{1}.spm.stats.fmri_spec.mthresh = 0.95;
 job{1}.spm.stats.fmri_spec.mask = {''};
 job{1}.spm.stats.fmri_spec.cvi = 'AR(1)';
 
@@ -76,11 +76,11 @@ job{1}.spm.stats.fmri_spec.sess(i).scans = file_path_run;
 
 for j=[1,2]
 
-    [onset, offset] = get_onset_ext(file_path_log, file_path_info, j, sub_int, 1);
+    [onset, offset] = get_onset_ext(file_path_log, file_path_info, j, sub_int, 0);
 
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).name = bistable_struct{j}.name;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).onset = onset;
-    job{1}.spm.stats.fmri_spec.sess(i).cond(j).duration = bistable_struct{j}.duration - offset;
+    job{1}.spm.stats.fmri_spec.sess(i).cond(j).duration = bistable_struct{j}.duration; %- offset;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).tmod = 1;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).pmod = struct('name', {}, 'param', {}, 'poly', {});
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).orth = 1;
