@@ -1,15 +1,22 @@
 function glm_spec(folder_path_root, folder_path_derivatives, folder_path_glm, file_path_info)
 
 % variables
-sub_all = {'001', '002'};
+sub_all = {'001'};
 run_all = {'001', '002', '003', '004', '005', '006', '007'};
 
-sub_run_comb = ...
+sub_run_comb_full = ...
 {
     {'001', '001'}, {'001', '002'}, {'001', '003'}, {'001', '004'}, {'001', '005'}, {'001', '006'}, {'001', '007'},...
     {'002', '001'}, {'002', '002'}, {'002', '003'}, {'002', '004'}, {'002', '005'}, {'002', '006'}, {'002', '007'},...
     {'004', '001'}, {'004', '002'}, {'004', '003'}, {'004', '004'}, {'004', '005'}, {'004', '006'}, {'004', '007'}
 };
+
+
+sub_run_comb = ...
+{
+    {'001', '001'}, {'001', '002'}, {'001', '003'}, {'001', '004'}, {'001', '005'}, {'001', '006'}, {'001', '007'},...
+};
+
 
 
 bistable_struct{1}.name = 'ALT';
@@ -39,8 +46,9 @@ job{1}.spm.stats.fmri_spec.fact = struct('name', {}, 'levels', {});
 job{1}.spm.stats.fmri_spec.bases.hrf.derivs = [0 0];
 job{1}.spm.stats.fmri_spec.volt = 1;
 job{1}.spm.stats.fmri_spec.global = 'None';
-job{1}.spm.stats.fmri_spec.mthresh = 0.95;
-job{1}.spm.stats.fmri_spec.mask = {''};
+job{1}.spm.stats.fmri_spec.mthresh = 0.80;
+%job{1}.spm.stats.fmri_spec.mask = {''};
+job{1}.spm.stats.fmri_spec.mask = {fullfile(folder_path_derivatives, 'A_bistable_perception/', 'sub-001/', 'anat/explicit_mask.nii')};
 job{1}.spm.stats.fmri_spec.cvi = 'AR(1)';
 
 
@@ -115,7 +123,7 @@ for j=[1,2]
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).name = localizer_struct{j}.name;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).onset = onset;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).duration = localizer_struct{j}.duration;
-    job{1}.spm.stats.fmri_spec.sess(i).cond(j).tmod = 0;
+    job{1}.spm.stats.fmri_spec.sess(i).cond(j).tmod = 1;
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).pmod = struct('name', {}, 'param', {}, 'poly', {});
     job{1}.spm.stats.fmri_spec.sess(i).cond(j).orth = 1;
     
